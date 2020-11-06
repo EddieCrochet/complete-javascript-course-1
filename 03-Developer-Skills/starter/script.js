@@ -46,7 +46,8 @@ checkWinner(scoreDolphins, scoreKoalas);
 ///////////
 //CODING CHALLENGE 2 - ARRAYS
 
-/*
+
+//returns JUST the TIP of the bill.. must hold original value
 function calcTip(value) { 
     if (49 < value < 301) {
         return value *.15
@@ -54,6 +55,7 @@ function calcTip(value) {
         return value *.2
     }
 }
+/*
 console.log(calcTip(100));
 
 const bills = [125, 555, 44];
@@ -73,6 +75,7 @@ console.log(totals);
 ////////////////////
 // CODING CHALLENGE 3 - OBJECTS
 
+/*
 const mark = {
     fullName : 'Mark Miller',
     mass: 78,
@@ -98,3 +101,33 @@ if (john.calcBMI() > mark.calcBMI()) {
 } else {
     console.log(`${mark.fullName}'s BMI (${mark.calcBMI()}) is greater than ${john.fullName}'s BMI (${john.calcBMI()})`);
 }
+*/
+
+////////////////
+//CODING CHALLENGE 4 LOOPS
+
+let bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+let tips = [];
+let totals = [];
+
+for(let i = 0; i < bills.length; i++) {
+    let curBill = bills[i];
+    //once again, calcTip returns ONLY the tip of the bill
+    let curTip = calcTip(curBill);
+    let curTot = curBill + curTip;
+    tips.push(curTip);
+    totals.push(curTot);
+}
+
+function calcAverage(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let cur = arr[i];
+        sum += cur;
+    }
+    let avg = sum/arr.length;
+    return avg;
+}
+
+console.log(calcAverage(bills));
+//oops these are jus tthe challenges from the last section but im just reviewing any way so whatevs
