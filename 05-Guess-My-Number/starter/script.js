@@ -21,22 +21,16 @@ document.querySelector('.check').addEventListener
     
     if (!guess) {
         message.textContent = 'No Letter!!!'
-    } else if (guessIndex > number) {
+
+        //when guess is wrong
+    } else if (guessIndex !== number) {
         if (score > 1) {
-            message.textContent = "Guess was too high!";
+            //ternary operator to refgactor unnecessary code for DRY principle
+            message.textContent = guessIndex > number ? "Guess was too high!" : "Guess was too low!";
             score--;
             DOMScore.textContent = score;
         } else {
-            message.textContent = "You lost the game, nerd!";
-            DOMScore.textContent = 0;
-        }
-    } else if (guessIndex < number) {
-        if (score > 1) {
-            message.textContent = "Guess was too low!";
-            score--;
-            DOMScore.textContent = score;
-        } else {
-            message.textContent = "You lost the game, guy!";
+            message.textContent = guessIndex > number ? "You lost the game, nerd!" : "You lost the game, guy!";
             DOMScore.textContent = 0;
         }
     } else if (guessIndex === number) {
