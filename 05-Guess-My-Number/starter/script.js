@@ -8,9 +8,9 @@ const message = document.querySelector('.message');
 const DOMScore = document.querySelector('.score');
 
 const alph = ['A', 'B', 'C', 'D', 'E' ,'F' , 'G', 'H', 'I', 'J' ,'K' , 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S' ,'T' , 'U', 'V', 'W', 'X', 'Y', 'Z'];
-for(let i = 0; i < 26; i++) {
-    secretLetter = alph[number];
-}
+
+secretLetter = alph[number];
+
 console.log(secretLetter);
 
 document.querySelector('.check').addEventListener
@@ -36,10 +36,10 @@ document.querySelector('.check').addEventListener
             score--;
             DOMScore.textContent = score;
         } else {
-            message.textContent = "You lost the game, nerd!";
+            message.textContent = "You lost the game, guy!";
             DOMScore.textContent = 0;
         }
-    } else if (guess == secretLetter) {
+    } else if (guessIndex === number) {
         document.querySelector('.number').textContent = secretLetter;
         document.querySelector('body').style.backgroundColor = '#60b347';
         message.textContent = "Guess was just right, Baby!";
@@ -54,12 +54,10 @@ document.querySelector('.check').addEventListener
 
 document.querySelector('.again').addEventListener
 ('click', function() {
-    let number = Math.trunc(Math.random()* 26) + 1;
+    number = Math.trunc(Math.random()* 26) + 1;
     score = 20;
-    let secretLetter;
-    for(let i = 0; i < 26; i++) {
-        secretLetter = alph[number];
-    }
+    secretLetter = alph[number];
+
     console.log(secretLetter);
     message.textContent = "Start guessing...";
     document.querySelector('.number').textContent = "?";
