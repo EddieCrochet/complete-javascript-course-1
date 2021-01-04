@@ -20,7 +20,16 @@ diceEl.classList.add('hidden');
 //array of player 1 and player 2s respective scores
 const scores = [0, 0];
 let currentScore = 0;
-let activeplayer = 0;
+let activePlayer = 0;
+
+const switchPlayer = function() {
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    //if activePlayer is 0 switch to 1 and vice versa
+    currentScore = 0;
+    player0El.classList.toggle('player--active');
+    player1El.classList.toggle('player--active');
+};
 
 //Rolling dice functionality
 btnRoll.addEventListener('click', function() {
@@ -36,18 +45,24 @@ btnRoll.addEventListener('click', function() {
         //add dice to current score
         currentScore += dice;    
         //selecting respective player 1 and 2 class names dynamically
-        document.getElementById(`current--${activeplayer}`).textContent = currentScore;
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
         //current0El.textContent = currentScore; // CHANGE LATER
         //above code was not dyamic
     } else { 
-        document.getElementById(`current--${activeplayer}`).textContent = 0;
         //switch to next player
-        activeplayer = activeplayer === 0 ? 1 : 0;
-        //if activePlayer is 0 switch to 1 and vice versa
-
-        currentScore = 0;
-
-        player0El.classList.toggle('player--active');
-        player1El.classList.toggle('player--active');
+        switchPlayer();
     }
+});
+
+//Holding hand functionality
+btnHold.addEventListener('click', function() {
+    // 1. add current score to active player's score
+    scores[activePlayer] += currentScore;
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+
+    // 2. check if players score is >= 100
+    // finish the game
+
+    // switch to next player
+    switchPlayer();
 })
