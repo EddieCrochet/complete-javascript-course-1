@@ -75,4 +75,17 @@ btnHold.addEventListener('click', function() {
         switchPlayer();
     }
     }
-})
+});
+
+// New Game functionality
+btnNew.addEventListener('click', function () {
+    document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner');
+    playing = true;
+    switchPlayer();
+    score0El.textContent = 0;
+    score1El.textContent = 0;
+    current0El.textContent = 0;
+    current1El.textContent = 0;
+    diceEl.classList.add('hidden');
+    scores = [0, 0];
+});
