@@ -18,7 +18,7 @@ score1El.textContent = 0;
 diceEl.classList.add('hidden');
 
 //array of player 1 and player 2s respective scores
-const scores = [0, 0];
+let scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 let playing = true;
@@ -34,26 +34,27 @@ const switchPlayer = function() {
 
 //Rolling dice functionality
 btnRoll.addEventListener('click', function() {
+    console.log(scores);
     if(playing) {
-        //1. Generate random dice roll
-    const dice = Math.trunc(Math.random() * 6) + 1;
+            //1. Generate random dice roll
+        const dice = Math.trunc(Math.random() * 6) + 1;
 
-    // 2. Display dice
-    diceEl.classList.remove('hidden');
-    diceEl.src = `dice-${dice}.png`;
+        // 2. Display dice
+        diceEl.classList.remove('hidden');
+        diceEl.src = `dice-${dice}.png`;
 
-    // 3. Check for rolled
-    if(dice!==1){
-        //add dice to current score
-        currentScore += dice;    
-        //selecting respective player 1 and 2 class names dynamically
-        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
-        //current0El.textContent = currentScore; // CHANGE LATER
-        //above code was not dyamic
-    } else { 
-        //switch to next player
-        switchPlayer();
-    }
+        // 3. Check for rolled
+        if(dice!==1){
+            //add dice to current score
+            currentScore += dice;    
+            //selecting respective player 1 and 2 class names dynamically
+            document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+            //current0El.textContent = currentScore; // CHANGE LATER
+            //above code was not dyamic
+        } else { 
+            //switch to next player
+            switchPlayer();
+        }
     }
 });
 
