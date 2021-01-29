@@ -37,6 +37,7 @@ calcAge(1991);
 
 // Hoisting and TDZ in practice
 
+/*
 // Variables
 console.log(me);
 //console.log(job);
@@ -79,3 +80,46 @@ const z = 3;
 console.log(x === window.x);
 console.log(x === window.y);
 console.log(x === window.z);
+*/
+
+//console.log(this);
+
+const calcAge = function(birthYear) {
+    console.log(2037- birthYear);
+    //this function is undefined because of strict mode
+    console.log(this);
+}
+calcAge(1991);
+
+const calcAgeArrow = birthYear => {
+    console.log(2037- birthYear);
+    //this function is window becasue arrow 
+    //functions do not get their own this keyword
+    //they point to scope above (in this case global) for this keyword
+    console.log(this);
+}
+calcAgeArrow(1984);
+
+const jonas = {
+    year: 1991,
+    calcAge: function() {
+        console.log(2037 - this.year)
+        console.log(this);
+    }
+}
+jonas.calcAge();
+
+const matilda = {
+    year: 2017,
+};
+
+//COPYING METHODS/FUNCTIONS FROM ONE OPBJECT TO ANOTHER IS POSSIBLE!
+// WOW!
+// This is called METHOD BORROWING!
+matilda.calcAge = jonas.calcAge;
+matilda.calcAge();
+
+const f = jonas.calcAge;
+console.log(f);
+// fut if you try to call f, it will be undefined
+f();
