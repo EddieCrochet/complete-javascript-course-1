@@ -84,6 +84,8 @@ console.log(x === window.z);
 
 //console.log(this);
 
+/*
+
 const calcAge = function(birthYear) {
     console.log(2037- birthYear);
     //this function is undefined because of strict mode
@@ -121,5 +123,18 @@ matilda.calcAge();
 
 const f = jonas.calcAge;
 console.log(f);
-// fut if you try to call f, it will be undefined
+// but if you try to call f, it will be undefined
 f();
+*/
+
+const jonas = {
+    firstName: 'Jonas',
+    year: 1991,
+    calcAge: function() {
+        console.log(2037 - this.year)
+        console.log(this);
+    },
+
+    greet: () => console.log(`Hey, ${this.firstName}`)
+};
+jonas.greet();
