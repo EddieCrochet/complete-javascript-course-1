@@ -131,10 +131,37 @@ const jonas = {
     firstName: 'Jonas',
     year: 1991,
     calcAge: function() {
-        console.log(2037 - this.year)
         console.log(this);
+        console.log(2037 - this.year);
+
+        //ES6 way!!! New way! Do this!
+        const self = this;
+        //self or that are standard names
+        const isMillenial = function() {
+            //this is undefined in regular function calls
+            console.log(this);
+            console.log(this.year >= 1981 && this.year <= 1996);
+            //console.log(this.year >= 1981 && this.year <= 1996);
+        };
+
+        /*
+         //one workaround is to set the this to a self const outside said function
+         const self = this;
+         //self or that are standard names
+         const isMillenial = function() {
+             //this is undefined in regular function calls
+             console.log(self);
+             console.log(self.year >= 1981 && self.year <= 1996);
+             //console.log(this.year >= 1981 && this.year <= 1996);
+         };
+         */
+        isMillenial();
     },
 
-    greet: () => console.log(`Hey, ${this.firstName}`)
+    greet: () => {
+        console.log(this);
+        console.log(`Hey, ${this.firstName}`);
+    } 
 };
 jonas.greet();
+jonas.calcAge();
