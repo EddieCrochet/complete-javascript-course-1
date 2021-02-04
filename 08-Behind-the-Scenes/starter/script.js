@@ -135,9 +135,7 @@ const jonas = {
         console.log(2037 - this.year);
 
         //ES6 way!!! New way! Do this!
-        const self = this;
-        //self or that are standard names
-        const isMillenial = function() {
+        const isMillenial = () => {
             //this is undefined in regular function calls
             console.log(this);
             console.log(this.year >= 1981 && this.year <= 1996);
@@ -165,3 +163,16 @@ const jonas = {
 };
 jonas.greet();
 jonas.calcAge();
+
+const addExpr = function (a, b) {
+    console.log(arguments);
+    return a + b;
+};
+addExpr(2, 5);
+addExpr(2, 5, 8, 12);
+
+ var addArrow = (a, b) => {
+    console.log(arguments);
+     return a + b;
+ };
+ addArrow(2, 5, 8);
