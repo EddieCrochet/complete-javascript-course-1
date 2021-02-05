@@ -27,6 +27,37 @@ const restaurant = {
   },
 };
 
+//DESTRUCTURING OBJECTS
+const {name, openingHours, categories} = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName, 
+  openingHours: hours, 
+  categories: tags
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+const{ menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+//mutating variables with objects
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14};
+
+//JS always expects a code block with curly braces, so
+//to get around this just wrap the object in parenthesis!
+({a, b} = obj);
+console.log(a, b);
+
+//Nested objects
+const {fri} = openingHours;
+console.log(fri);
+
+
+//DESTRUCTURING ARRAYS
+/*
 const arr = [2,3,4];
 const a = arr[0];
 const b = arr[1];
@@ -66,3 +97,4 @@ console.log(i, j, k);
 //Defaolt values
 const [p=1, q=1, r=1] = [8, 9];
 console.log(p, q, r);
+*/
