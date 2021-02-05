@@ -127,6 +127,9 @@ console.log(f);
 f();
 */
 
+/*
+//regular vs arrow functions
+
 const jonas = {
     firstName: 'Jonas',
     year: 1991,
@@ -142,7 +145,7 @@ const jonas = {
             //console.log(this.year >= 1981 && this.year <= 1996);
         };
 
-        /*
+        //
          //one workaround is to set the this to a self const outside said function
          const self = this;
          //self or that are standard names
@@ -152,7 +155,7 @@ const jonas = {
              console.log(self.year >= 1981 && self.year <= 1996);
              //console.log(this.year >= 1981 && this.year <= 1996);
          };
-         */
+         //
         isMillenial();
     },
 
@@ -176,3 +179,65 @@ addExpr(2, 5, 8, 12);
      return a + b;
  };
  addArrow(2, 5, 8);
+ */
+
+ //PRIMITIVES VS OBJECTS
+
+ let age = 30;
+ let oldAge = age;
+ age = 31;
+ console.log(age, oldAge);
+
+ const me = {
+     name: 'Jonas',
+     age: 30,
+ };
+ const friend = me;
+ friend.age = 27;
+ console.log('Friend:', friend);
+ console.log('Me:', me); 
+
+ //primitive types
+ //stored in stack - behaves this way
+ let lastName = 'Willims';
+ let oldLastname = lastName;
+ lastName = 'Davis';
+ console.log(lastName, oldLastname);
+
+ //stored in heap - behaves this way
+ //reference types
+ const jessica = {
+     firstName: 'Jessica',
+     lastName: 'Williams',
+     age: 27,
+ };
+ 
+ //below we are ONLY copying the reference that POINTS to the object
+ //NOT the object itself
+ const marriedJessica = jessica;
+ //NOT A NEW OBJECT IN THE HEAP
+ //SAME MEMORY REFERENCE IN THE STACK
+ marriedJessica.lastName = 'Davis';
+ console.log('Before:', jessica);
+ console.log('After: ', marriedJessica);
+
+ const jessica2 = {
+    firstName: 'Jess',
+    lastName: 'Willy',
+    age: 27,
+    family: ['Alice', 'Bob'],
+ };
+
+ //we can use this method to merge 2 objects
+ //ONLY WORKS ON FIRST LEVEL
+ //DOES NOT WORK ON CHILDREN
+ //SHALLOW COPY AND NOT A DEEP CLONE
+ const jessicaCopy = Object.assign({}, jessica2);
+ jessicaCopy.lastName = 'Daquis';
+
+ jessicaCopy.family.push('Mary');
+ jessicaCopy.family.push('John');
+
+ //the FAMILY property is deeply nested - so object.assign will not change it
+ console.log('Before:', jessica2);
+ console.log('After: ', jessicaCopy);
