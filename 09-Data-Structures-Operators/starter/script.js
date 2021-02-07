@@ -40,6 +40,16 @@ const restaurant = {
   },
 };
 
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+/////////////
+//SHORT CIRCUIITING
+/*
 console.log('------------ OR -----------------');
 //Use ANY data type to return ANY data type - SHORT CIRCUITING!!!
 console.log(3 || 'Jonas');
@@ -68,6 +78,8 @@ if (restaurant.orderPizza) {
 //quick replace for very simple if statements
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
+
+*/
 ////////////////////////
 //REST OPERATOR
 
