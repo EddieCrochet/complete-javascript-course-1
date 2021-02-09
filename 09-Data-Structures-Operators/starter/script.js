@@ -40,6 +40,22 @@ const restaurant = {
   },
 };
 
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+// OLD SCHOOL WAY
+for(const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
+
+// USING DESTRUCTURING
+for(const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+////////////////////
+//'football'/soccer game for the coding challenges
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -107,7 +123,9 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 GOOD LUCK 😀
 */
-
+///////////
+//my work below
+/*
 //1. 
 //We serperate the nested 2d array into 2 different arrays while keeping our old data intact and unchanged
 const [players1, players2] = game.players;
@@ -146,6 +164,7 @@ printGoals(...game.scored);
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
 
+*/
 
 ////////////////
 //Nullish coalescing operator
