@@ -60,6 +60,19 @@ for( const day of weekdays) {
   console.log(`On ${day}, we open at ${open}!`);
 }
 
+// METHODS
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderFood?.(0, 1) ?? 'Method does not exist');
+
+//Arrays
+const users = [{name: 'Jonas', email: 'hello@jonas.io'}];
+
+console.log(users[0]?.name ?? 'User array empty...');
+
+// ...above is way better than below...
+if (users.length > 0) console.log(users[0].name);
+else console.log('User array empty...');
+
 /////////////////
 // for-of loop
 /*
