@@ -114,8 +114,14 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 GOOD LUCK 😀
 */
 
-for(const x in game.scored){
-  console.log(`Goal ${x + 1}: ${game.scored[x]}`);
+// I did it this way
+for(let i = 0; i < game.scored.length; i++){
+  console.log(`Goal ${i+1}: ${game.scored[i]}`);
+}
+
+// They did it a little cooler tbh...
+for(const [j, player] of game.scored.entries()){
+  console.log(`Goal ${j+1}: ${player}`);
 }
 
 /*
