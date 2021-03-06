@@ -50,6 +50,31 @@ const restaurant = {
 if(restaurant.openingHours && restaurant.openingHours.mon)
 console.log(restaurant.openingHours.mon.open);
 
+// Property NAMES
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are going to open on ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `
+}
+console.log(openStr);
+
+// Propert VALUES
+const values = Object.values(openingHours);
+console.log(values);
+
+// Entire Object
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+// immediately destructure in for of loop below
+for(const [key, {open, close}] of entries) {
+  console.log(`on ${key} we open at ${open} and close at ${close}`);
+}
+
+/*
 // WITH OPTIONAL CHAINING
 //makes easier to check for bugs we might not otherwise know about
 console.log(restaurant.openingHours.mon?.open);
@@ -72,6 +97,7 @@ console.log(users[0]?.name ?? 'User array empty...');
 // ...above is way better than below...
 if (users.length > 0) console.log(users[0].name);
 else console.log('User array empty...');
+*/
 
 /////////////////
 // for-of loop
@@ -104,7 +130,7 @@ const game = {
       'Davies',
       'Kimmich',
       'Goretzka',
-      'Coman',
+      'Coman',B
       'Muller',
       'Gnarby',
       'Lewandowski',
