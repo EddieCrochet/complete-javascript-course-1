@@ -113,7 +113,7 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 
 GOOD LUCK 😀
 */
-
+// 1.
 // I did it this way
 for(let i = 0; i < game.scored.length; i++){
   console.log(`Goal ${i+1}: ${game.scored[i]}`);
@@ -123,6 +123,16 @@ for(let i = 0; i < game.scored.length; i++){
 for(const [j, player] of game.scored.entries()){
   console.log(`Goal ${j+1}: ${player}`);
 }
+
+// 2.
+let sum=0;
+for(let odd in game.odds){
+  sum+=game.odds[odd];
+}
+let average=sum/Object.keys(game.odds).length;
+console.log(average);
+
+// notes???
 
 /*
 if(restaurant.openingHours && restaurant.openingHours.mon)
