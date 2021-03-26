@@ -125,12 +125,26 @@ for(const [j, player] of game.scored.entries()){
 }
 
 // 2.
+// my way
 let sum=0;
-for(let odd in game.odds){
-  sum+=game.odds[odd];
-}
+for(let odd in game.odds) sum+=game.odds[odd];
 let average=sum/Object.keys(game.odds).length;
 console.log(average);
+
+// THIS IS THE WAY THEY DID NUMBER 2 BELOW
+// my way looks more efficient :)
+const odds = Object.values(game.odds);
+let average = 0;
+for(const odd of odds) average += odd;
+average /= odds.length;
+console.log(average);
+
+// 3.
+// We need the team name AND the score - WHOLE OBJECT!
+// this is how we know to use a for of loop
+for(const of Object){
+
+}
 
 // notes???
 
