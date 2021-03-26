@@ -81,7 +81,7 @@ const game = {
     ],
   ],
   score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels', 'dowell', 'Hummels', 'Lewandowski'],
   date: 'Nov 9th, 2037',
   odds: {
     team1: 1.33,
@@ -134,17 +134,26 @@ console.log(average);
 // THIS IS THE WAY THEY DID NUMBER 2 BELOW
 // my way looks more efficient :)
 const odds = Object.values(game.odds);
-let average = 0;
-for(const odd of odds) average += odd;
-average /= odds.length;
-console.log(average);
+let avrg = 0;
+for(const odd of odds) avrg += odd;
+avrg /= odds.length;
+console.log(avrg);
 
 // 3.
 // We need the team name AND the score - WHOLE OBJECT!
 // this is how we know to use a for of loop
-for(const of Object){
-
+for(const [team, odd] of Object.entries(game.odds)){
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr}: ${odd}`);
 }
+
+//BONUS
+game.scorers = {};
+for(const [k, player] of Object.entries(game.scored)){
+  if(Object.keys(game.scorers).includes(player)) game.scorers[player] ++;
+  else game.scorers[player] = 1;
+}
+console.log(game);
 
 // notes???
 
