@@ -81,7 +81,7 @@ const game = {
     ],
   ],
   score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels', 'dowell', 'Hummels', 'Lewandowski'],
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels', 'dowell', 'Hummels', 'Lewandowski', 'Lewandowski', 'Gnarby', 'Hummels', 'dowell', 'jane', 'Lewandowski', 'Gnarby', 'Lewandowski', ],
   date: 'Nov 9th, 2037',
   odds: {
     team1: 1.33,
