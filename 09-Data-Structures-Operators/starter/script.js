@@ -47,6 +47,42 @@ const restaurant = {
 
 };
 
+
+
+//////////////
+//SETS
+
+const orderSet = new Set(['pasta', 'pizza', 'pizza',
+'risotto', 'pasta', 'pizza']);
+console.log(orderSet);
+console.log(new Set('Jonas'));
+console.log(orderSet.size);
+console.log(orderSet.has('pizza'));
+console.log(orderSet.has('wine'));
+orderSet.add('garlic bread');
+orderSet.add('garlic bread');
+orderSet.delete('risotto');
+// THERE ARE NO INDEXES IN SETS - NO WAY TO GET DATA OR VALUES OUT
+console.log(orderSet);
+//below method deletes everything from set
+//orderSet.clear()
+
+for (const order of orderSet) console.log(order);
+
+//main use of sets is to remove duplicates from arrays
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager',
+'Chef', 'Waiter'];
+
+// unpack set into a new array - then can compare arrays
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager',
+'Chef', 'Waiter']).size);
+
+console.log(new Set('hfbejhbahrfyhrejkl').size);
+
 ////////////////////
 //'football'/soccer game for the coding challenges
 const game = {
@@ -114,7 +150,7 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 GOOD LUCK 😀
 */
 // 1.
-// I did it this way
+/*
 for(let i = 0; i < game.scored.length; i++){
   console.log(`Goal ${i+1}: ${game.scored[i]}`);
 }
@@ -154,6 +190,8 @@ for(const [k, player] of Object.entries(game.scored)){
   else game.scorers[player] = 1;
 }
 console.log(game);
+
+*/
 
 // notes???
 
