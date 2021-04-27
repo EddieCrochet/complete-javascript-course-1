@@ -78,6 +78,14 @@ const gameEvents = new Map([
 ]);
 
 
+// 1.
+let events = [];
+for (const [key, value] of gameEvents) {
+  if(!events.includes(value)) events.push(value)
+}
+console.log(events);
+
+
 //////////
 // MAPS ITERATION
 /*
