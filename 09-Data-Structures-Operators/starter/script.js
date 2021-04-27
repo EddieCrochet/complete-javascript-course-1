@@ -77,6 +77,7 @@ for (const [key, value] of question) {
 const answer = Number(prompt('Your answer'));
 console.log(answer);
 
+//The power of having boolean as keys below
 //logs correct if user inputs correct answer
 console.log(question.get(question.get('correct') === answer));
 
