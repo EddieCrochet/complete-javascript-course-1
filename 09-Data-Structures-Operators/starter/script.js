@@ -85,7 +85,17 @@ myBtn.setAttribute('class', 'btn');
 myBtn.textContent = 'Translate!';
 myBtn.style.width = 'auto';
 document.body.append(myBtn);
-const text = document.querySelector('textarea').value;
+
+myBtn.addEventListener('click', function() {
+  const text = document.querySelector('textarea').value;
+  console.log(text);
+  const textArr = text.split("\n");
+  textArr.forEach(function(word){
+    word = word.trim();
+    const wordArr = word.split("_");
+    
+  })
+});
 
 
 
