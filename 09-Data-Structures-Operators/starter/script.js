@@ -80,7 +80,11 @@ GOOD LUCK 😀
 */
 
 document.body.append(document.createElement('textarea'));
-document.body.append(document.createElement('button'));
+const myBtn = document.createElement('button');
+myBtn.setAttribute('class', 'btn');
+myBtn.textContent = 'Translate!';
+myBtn.style.width = 'auto';
+document.body.append(myBtn);
 const text = document.querySelector('textarea').value;
 
 
