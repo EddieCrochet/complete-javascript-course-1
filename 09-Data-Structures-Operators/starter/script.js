@@ -91,9 +91,9 @@ myBtn.addEventListener('click', function() {
   console.log(text);
   const textArr = text.split("\n");
   textArr.forEach(function(word){
-    word = word.trim();
-    const wordArr = word.split("_");
-    
+    const [first, second] = word.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(second[0], second[0].toUpperCase())}`
+    document.body.append(output);
   })
 });
 
