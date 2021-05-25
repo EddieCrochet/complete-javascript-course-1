@@ -47,6 +47,24 @@ const restaurant = {
 
 };
 
+//////////////
+//String Methods Practice
+
+const flights = 
+  '_Delayed_Departure;fao98683745;tx73738942;11:25 +_Arrival;bru73749568;fao98683745;11:45 +_Delayed_Arrival;hel53726587;fao98683745;12:05 +_Departure;fao98683745;lis63896572;12:30';
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+  //console.log(flight.split(';'));
+  //unpack into variables below
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '🔴': ''} 
+    ${type.replaceAll('_', ' ')} ${getCode(from)} ${getCode(to)} 
+    (${time.replace(':', 'h')})`;
+  console.log(output);
+}
+
 /////////////////
 // Coding Challenge #4
 
@@ -79,6 +97,7 @@ Afterwards, test with your own test data!
 GOOD LUCK 😀
 */
 
+/*
 document.body.append(document.createElement('textarea'));
 const myBtn = document.createElement('button');
 myBtn.setAttribute('class', 'btn');
@@ -96,6 +115,7 @@ myBtn.addEventListener('click', function() {
     //document.body.append(output);
   })
 });
+*/
 
 
 
