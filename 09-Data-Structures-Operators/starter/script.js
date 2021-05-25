@@ -88,12 +88,11 @@ document.body.append(myBtn);
 
 myBtn.addEventListener('click', function() {
   const text = document.querySelector('textarea').value;
-  //console.log(text);
   const textArr = text.split("\n");
   textArr.forEach(function(word){
     const [first, second] = word.toLowerCase().trim().split('_');
-    console.log(`${first}${second.replace(second[0], second[0].toUpperCase())}`)
-    //const output = `${first}${second.replace(second[0], second[0].toUpperCase())}`
+    const output = `${first}${second.replace(second[0], second[0].toUpperCase())}`
+    console.log(`${output.padEnd(20)}${'✅'.repeat(1 + textArr.indexOf(word))}`)
     //document.body.append(output);
   })
 });
