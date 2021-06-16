@@ -46,10 +46,47 @@ const restaurant = {
   },
 
 };
+/*
+
+///////////////////////
+// passing args
+
+const flight = "LH234";
+const jonas = {
+  name: 'Jonas Schmedtmann',
+  passport: 24739479284
+}
+
+
+const checkIn = function(flightNum, passenger) {
+  flightNum = 'LH999';
+  passenger.name = 'Mr.' + passenger.name;
+
+  if(passenger.passport === 24739479284) {
+    alert('Checked in!');
+  } else {
+    alert('wroooong');
+  }
+};
+
+checkIn(flight, jonas);
+
+// above is the same as ....
+const flightNum = flight;
+const passenger = jonas;
+
+const newPassport = function(person) {
+  person.passport = Math.trunc(Math.random() * 1000000000000);
+}
+
+newPassport(jonas);
+checkIn(flight, jonas);
+*/
 
 //////////////
 //String Methods Practice
 
+/*
 const flights = 
   '_Delayed_Departure;fao98683745;tx73738942;11:25 +_Arrival;bru73749568;fao98683745;11:45 +_Delayed_Arrival;hel53726587;fao98683745;12:05 +_Departure;fao98683745;lis63896572;12:30';
 
@@ -64,6 +101,7 @@ for (const flight of flights.split('+')) {
     (${time.replace(':', 'h')})`;
   console.log(output);
 }
+*/
 
 /////////////////
 // Coding Challenge #4
