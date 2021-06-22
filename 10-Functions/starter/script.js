@@ -89,6 +89,7 @@ greetArr('hola')('buddy');
 
 // CALL
 
+/*
 const lufthansa = {
     airline: 'Lufthansa',
     iataCode: 'LM',
@@ -190,6 +191,8 @@ const addVAT = addTax.bind(null, 0.23);
 console.log(addVAT(23));
 console.log(addVAT(100));
 
+
+//below accomplished the same thing as the bind above
 const addTaxRate = function(rate) {
     return function(value) {
         return value + value * rate;
@@ -198,3 +201,28 @@ const addTaxRate = function(rate) {
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(23));
 console.log(addVAT2(100));
+*/
+
+//////////////
+// coding challenge
+////////////////////////////
+
+const poll = {
+    question: 'What is the best programming language?',
+    options: ['0: Javascript', '1: Python', '2: Rust', '3: C++'],
+    // This generates [0, 0, 0, 0]
+    answers: new Array(4).fill(0),
+    registerNewAnswer(){
+        // Get Answer!
+        ////////////////////
+
+        //prompt(`${this.question} \n ${this.options[0]} \n ${this.options[1]} \n ${this.options[2]} \n ${this.options[3]} \n (Please enter the option number in the box)`);
+        // can do the above as below!!!
+
+        //prompt returns the INPUT and since we are using a number as the input for the answer we will just immediately  store it as  the number
+        const answer = Number(prompt(`${this.question} \n ${this.options.join('\n')}\n(Please enter the option number in the box)`));
+        console.log(answer);
+        
+    }, 
+};
+poll.registerNewAnswer();
