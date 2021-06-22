@@ -232,7 +232,28 @@ const poll = {
         //the program wanted me to put the line above, but my line above that is better :)
         this.answers[answer]++;
         console.log(this);
+
+        this.displayResults();
+        this.displayResults('string');
     }, 
+    //method to display results on DOM
+    displayResults(type = 'array'){
+        if(type === 'array') {
+            console.log(this.answers);
+        } else if (type === 'string') {
+            console.log(`Poll results are ${this.answers.join(', ')}`);
+        }
+    }
 };
 document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
-//we have to bind so that the this keyword in the objewct's function does NOT point to the query selector, but to the poll object
+//we have to bind so that the this keyword in the object's function does NOT point to the query selector (because of the event listener), but to the poll object
+
+
+// Test data for buonus!!
+// [5, 2, 3]
+// [1, 5, 3, 9, 6, 1]
+
+// remember the type we pass in has a default of array so if we dont specify it will be that
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
