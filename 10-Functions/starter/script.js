@@ -223,6 +223,16 @@ const poll = {
         const answer = Number(prompt(`${this.question} \n ${this.options.join('\n')}\n(Please enter the option number in the box)`));
         console.log(answer);
         
+        // Register answer!!
+        ////////////////////////
+
+        typeof answer === 'number' &&
+        answer >= 0 && answer <= this.answers.length &&
+        //answer < this.answers.length &&
+        //the program wanted me to put the line above, but my line above that is better :)
+        this.answers[answer]++;
+        console.log(this);
     }, 
 };
-poll.registerNewAnswer();
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
+//we have to bind so that the this keyword in the objewct's function does NOT point to the query selector, but to the poll object
