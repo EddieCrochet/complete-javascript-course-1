@@ -147,3 +147,54 @@ console.log(swiss);
 
 book.call(swiss, ...flightData);
 console.log(swiss);
+
+// bind method
+
+//returns new function where this keyword is set to whatever object you pass in
+//this way is preferred as it allows you to set the this keyword NOW 
+// and call the function when you like
+const bookEW = book.bind(eurowings);
+const bookLM = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Swteve clean');
+
+// double-bind for more specificity!
+// this is a pattern known aas partial application
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jonas j');
+bookEW23("marty cro");
+
+// with event listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function() {
+    console.log(this);
+
+    this.planes++;
+    console.log(this.planes);
+};
+//lufthansa.buyPlane();
+document.querySelector('.buy').addEventListener
+('click', lufthansa.buyPlane.bind(lufthansa));
+
+//PARTIAL APPLICATION
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+//where the VAT stands for a specific tax rate of 23%
+const addVAT = addTax.bind(null, 0.23);
+// same as below
+// addVAT = value => value + value * 0.23;
+
+console.log(addVAT(23));
+console.log(addVAT(100));
+
+const addTaxRate = function(rate) {
+    return function(value) {
+        return value + value * rate;
+    };
+}
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(23));
+console.log(addVAT2(100));
