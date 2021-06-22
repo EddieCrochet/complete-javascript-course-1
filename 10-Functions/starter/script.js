@@ -86,6 +86,9 @@ greetArr('hola')('buddy');
 //////////
 // call and apply methods
 
+
+// CALL
+
 const lufthansa = {
     airline: 'Lufthansa',
     iataCode: 'LM',
@@ -104,7 +107,7 @@ lufthansa.book(239, 'Jonas Schmeddt');
 lufthansa.book(635, 'John Smith');
 
 const eurowings = {
-    name: 'Eurowings',
+    airline: 'Eurowings',
     iataCode: 'EW',
     bookings: [],
 };
@@ -114,8 +117,33 @@ const book = lufthansa.book;
 //does NOT work
 //book(23, 'sara w');
 
+//think of it like saying 'the book function/method, but I want to call it on
+// whatever new objct I pass in' or something
 book.call(eurowings, 23, 'sara w');
 console.log(eurowings);
 
 book.call(lufthansa, 239, 'mary c');
 console.log(lufthansa);
+
+const swiss = {
+    airline:'Swiss Air Lines',
+    iataCode: 'LX', 
+    bookings: [],
+};
+
+book.call(swiss, 583, 'Mary kreezie');
+console.log(swiss);
+
+//APPLY
+
+//similar to call, but does not recieve list of args after this keyword,
+// but instead will take an array of the arguments
+
+const flightData = [583, "goerge c"];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+//apply has pretty much been replaced with....
+
+book.call(swiss, ...flightData);
+console.log(swiss);
