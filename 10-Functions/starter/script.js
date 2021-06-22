@@ -1,6 +1,8 @@
 'use strict';
 
+/*
 const bookings = [];
+
 
 const createBooking = function (flightNum, numPassengers = 1, price = 199) {
     const booking = {
@@ -11,6 +13,7 @@ const createBooking = function (flightNum, numPassengers = 1, price = 199) {
     console.log(booking);
     bookings.push(booking);
 }
+*/
 
 // createBooking('LH123');
 // createBooking('LH123', 2, 800);
@@ -52,6 +55,7 @@ const high5 = function () {
 
 // functions returning functinos
 
+/*
 const greet = function(greeting){
     return function(name) {
         console.log(`${greeting} ${name}`);
@@ -77,3 +81,41 @@ const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 greetES6('howdy')('pardner');
 
 greetArr('hola')('buddy');
+*/
+
+//////////
+// call and apply methods
+
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LM',
+    bookings: [],
+    //use the call method here to avoid copy and pasting this function to similar objects
+    book(flightNum, name) {
+        console.log(
+            `${name} booked a fight on ${this.airline} flght ${this.iataCode}${flightNum}`
+            );
+        this.bookings.push({flight: `${this.iataCode}${flightNum}`, 
+        name });
+    },
+};
+
+lufthansa.book(239, 'Jonas Schmeddt');
+lufthansa.book(635, 'John Smith');
+
+const eurowings = {
+    name: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+};
+
+const book = lufthansa.book;
+
+//does NOT work
+//book(23, 'sara w');
+
+book.call(eurowings, 23, 'sara w');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'mary c');
+console.log(lufthansa);
