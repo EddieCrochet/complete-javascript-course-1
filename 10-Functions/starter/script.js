@@ -207,6 +207,7 @@ console.log(addVAT2(100));
 // coding challenge
 ////////////////////////////
 
+/*
 const poll = {
     question: 'What is the best programming language?',
     options: ['0: Javascript', '1: Python', '2: Rust', '3: C++'],
@@ -257,3 +258,23 @@ document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer
 poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+*/
+
+////////////
+// IIFE
+// these functions disapppear right after they are called
+
+const runOnce = function () {
+    console.log('This will never run again');
+};
+runOnce();
+
+//basically transform functino statement into an expression that we can immediately call
+//simple way to isolate variables declarations not globally
+
+// IIFE
+(function() {
+    console.log('this will never run again');
+});
+
+(() => console.log('Also works the es 6 way'))();
