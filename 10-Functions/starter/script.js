@@ -264,6 +264,7 @@ poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 // IIFE
 // these functions disapppear right after they are called
 
+/*
 const runOnce = function () {
     console.log('This will never run again');
 };
@@ -278,3 +279,31 @@ runOnce();
 });
 
 (() => console.log('Also works the es 6 way'))();
+*/
+
+////////////////
+// Closures
+
+// we do not create closure, they happen automatically
+const secureBooking = function() {
+    let passengerCount = 0;
+
+    //function that return a function
+    return function() {
+        passengerCount++;
+        console.log(passengerCount);
+    }
+}
+
+// booker becomes a function that is essentially what the passengerCount returns
+//they can make a function remember all variable available at functions birthpplace
+// any function always has access to the variable environment of the execution context in which it was created
+//th CLOSURE is basically just the variable environment attached to the function exactly was it was where it was created
+// 'Closed over" variables
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
