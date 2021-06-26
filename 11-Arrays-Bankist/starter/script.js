@@ -74,3 +74,42 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+// neg nums take from end of array
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice(1, -2));
+
+// slice with no args can give same results as spread
+//shallow copy of array
+console.log(arr.slice());
+console.log([...arr]);
+
+// SPLICE
+//console.log(arr.splice(2));
+arr.splice(-1);
+console.log(arr);
+arr.splice(1, 2);
+console.log(arr);
+
+// REVERSE
+
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+// reverse also changes the original array!
+console.log(arr);
+
+// CONCAT
+const letters = arr.concat(arr2);
+console.log(letters);
+// these 2 give the same results...
+console.log([...arr, ...arr2]);
+
+// JOIN
+console.log(letters.join(' - '));
