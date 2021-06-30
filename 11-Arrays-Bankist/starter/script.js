@@ -79,6 +79,16 @@ const displayMovements = function(movements) {
 };
 displayMovements(account1.movements);
 
+// this function actually takes each account and adds a username property to it based off of the owner name
+const createUserNames = (accs) => {
+  accs.forEach(function(acc) {
+    acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join ('');
+  });
+};
+console.log(accounts);
+createUserNames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -192,6 +202,7 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
+/*
 const checkDogs = (julias, kates) => {
   //remove cats from julias array (first and last 2)
   const noCats = julias.slice(1, -2);
@@ -208,3 +219,4 @@ const checkDogs = (julias, kates) => {
 
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+*/
