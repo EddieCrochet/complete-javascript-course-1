@@ -249,15 +249,9 @@ const calcAverageHumanAge = (ages) => {
       return 16 + age * 4;
     }
   }).filter(age => age >= 18)
-  .reduce((acc, cur) => acc + cur);
+  .reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
   console.log(netAge);
-
-  let aveHumanAge = netAge/ages.length;
-
-  console.log(aveHumanAge);
-  //remove all dogs less than 18 human years old
-
 }
 calcAverageHumanAge([1, 4, 5, 7]);
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
-calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
