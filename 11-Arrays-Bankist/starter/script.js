@@ -61,6 +61,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 const displayMovements = function(movements) {
   containerMovements.innerHTML = "";
 
@@ -70,30 +72,121 @@ const displayMovements = function(movements) {
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov}€</div>
       </div>
     `;
 
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance}€`;
+};
+
+const calcDisplaySummary = function(acc) {
+  //calculate total incomes
+  const incomes = acc.movements.filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  // calculate total out going expensees
+  const out = acc.movements.filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  //calcuate our made up awesome interest rate
+  const interest = acc.movements.filter(mov => mov > 0)
+    .map(deposit => deposit * acc.interestRate/100)
+    .filter((int, i, arr) => {
+      //console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
 // this function actually takes each account and adds a username property to it based off of the owner name
 const createUserNames = (accs) => {
   accs.forEach(function(acc) {
     acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join ('');
   });
 };
-console.log(accounts);
+//console.log(accounts);
 createUserNames(accounts);
-console.log(accounts);
+//console.log(accounts);
+
+////////////////
+// Event Handlers
+let currentAccount;
+
+btnLogin.addEventListener('click', function(e) {
+  //prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  console.log(currentAccount);
+
+  if(currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and welcome message
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
+    containerApp.style.opacity = 100;
+
+    // clear input login fields
+    inputLoginUsername.value = inputLoginPin.value = "";
+    inputLoginPin.blur();
+    
+    // Display movements
+    displayMovements(currentAccount.movements);
+
+    // Display balance
+    calcDisplayBalance(currentAccount.movements);
+
+    // Display summary
+    calcDisplaySummary(currentAccount);
+  }
+});
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
 /////////////////////////////////////////////////
+
+///////////////////////////
+// find method
+
+//like filter but only returns the firtmatch
+/*
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+*/
+
+////////////////////////
+// chaining methods
+
+/*
+const eurToUsd = 1.1;
+
+// PIPELINE
+const totalDepositUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    console.log(i, arr);
+    return mov * eurToUsd
+  })
+  //.map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositUSD);
+*/
 
 /*
 let arr = ['a', 'b', 'c', 'd', 'e'];
@@ -137,7 +230,7 @@ console.log(letters.join(' - '));
 */
 
 /*
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 
 //for(const movement of movements) {
   for (const [i, movement] of movements.entries()) {
@@ -240,6 +333,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
+/*
 const calcAverageHumanAge = (ages) => {
   // calculate each dog's age in human years
   let netAge = ages.map(age => {
@@ -255,3 +349,18 @@ const calcAverageHumanAge = (ages) => {
 calcAverageHumanAge([1, 4, 5, 7]);
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+*/
+
+////////////////
+// coding challenge 3
+
+/* 
+Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time as an arrow function, and using chaining!
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+
+...lol i did it that way the first time....
+*/
