@@ -127,7 +127,7 @@ const updateUI = function(currentAccount) {
   calcDisplaySummary(currentAccount);
 }
 
-////////////////
+///////////////////////////////
 // Event Handlers
 let currentAccount;
 
@@ -164,6 +164,21 @@ btnTransfer.addEventListener('click', function(e) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
   }
+});
+
+btnLoan.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount/10)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
 });
 
 btnClose.addEventListener('click', function(e) {
