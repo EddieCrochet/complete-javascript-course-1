@@ -63,10 +63,12 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const displayMovements = function(movements) {
+const displayMovements = function(movements, sort=false) {
   containerMovements.innerHTML = "";
 
-  movements.forEach(function(mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function(mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -197,11 +199,53 @@ btnClose.addEventListener('click', function(e) {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
+let sorted = false;
+
+btnSort.addEventListener('click', function(e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+})
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
 /////////////////////////////////////////////////
+
+///////////////////////
+// sort method stuffs
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+
+console.log(movements);
+
+// below does not work proper - only looks at first value
+//console.log(movements.sort());
+
+// Ascending
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+
+// below will do the same as above... but simpler...
+
+movements.sort((a, b) => a - b);
+
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (a < b) return 1;
+// });
+
+//same with below and above...
+
+movements.sort((a, b) => b - a);
+console.log(movements);
 
 ///////////////////////////
 // find method
