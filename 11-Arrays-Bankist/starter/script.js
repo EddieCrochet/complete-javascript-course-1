@@ -213,6 +213,33 @@ btnSort.addEventListener('click', function(e) {
 
 /////////////////////////////////////////////////
 
+///////////////////////////////////
+// more creating and filling arrays
+
+const x = new Array(7);
+const y = new Array(7);
+const z = new Array(7);
+console.log(x);
+y.fill(1, 3, 5);
+console.log(y);
+z.fill(1);
+console.log(z);
+
+const arr = [1,2,3,4,5,6,7,8];
+// Array.from()
+const xy = Array.from({length: 7}, () => 1);
+console.log(xy);
+
+const xz = Array.from({length: 7}, (_, i) => i + 1);
+console.log(xz);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(document.querySelectorAll('.movements__value'), el => Number(el.textContent.replace('€', '')));
+
+  console.log(movementsUI);
+});
+
+/*
 ///////////////////////
 // sort method stuffs
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
@@ -246,6 +273,7 @@ console.log(movements);
 
 movements.sort((a, b) => b - a);
 console.log(movements);
+*/
 
 ///////////////////////////
 // find method
